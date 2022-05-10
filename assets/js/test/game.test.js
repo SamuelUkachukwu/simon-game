@@ -29,6 +29,9 @@ describe("game object contain correct keys", () => {
     test("playerMoves key exist", () => {
         expect("playerMoves" in game).toBe(true);
     });
+    test("turnNumber key exist", () => {
+        expect("turnNumber" in game).toBe(true);
+    });
     test("choices key exist", () => {
         expect("choices" in game).toBe(true);
     });
@@ -48,6 +51,9 @@ describe("newGame works correctly", () => {
     test("should set game score to zero", () => {
         expect(game.score).toEqual(0)
     });
+    test("should set turnNumber to zero", () => {
+        expect(game.turnNumber).toEqual(0)
+    });
     test("should clear player moves array", () => {
         expect(game.playerMoves.length).toBe(0)
     });
@@ -56,6 +62,12 @@ describe("newGame works correctly", () => {
     });
     test("should display 0 for the element with id 'score'", () => {
         expect(document.getElementById("score").innerText).toEqual(0)
+    });
+    test("expect data-listener to be true", ()=>{
+        const elements = document.getElementsByClassName("circle");
+        for(let element of elements){
+            expect(element.getAttribute("data-listener")).toBe("true")
+        }
     })
 })
 
